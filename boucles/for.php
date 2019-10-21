@@ -111,17 +111,18 @@ echo '<br><br>';
 //Créer un tableau pour les mois de l'année et affiché tous les mois de Janvier à Décembre
 //modifier et/ou remplacer les éléments ci-dessous
 echo "8.Les mois depuis le debut de l'annee : <br>";
-$mois = [];
-for ($i = 0; $i < 0; $i) {
-    echo '';
+$mois = array('Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Décembre');
+for ($i = 0; $i < count($mois); $i++) {
+    echo $mois[$i] . '<br>';
 }
+
 echo '<br><br>';
 
 //Afficher les mois de la fin de l'année jusqu'au début de l'année
 //modifier et/ou remplacer les éléments ci-dessous
 echo "9.Les mois depuis la fin de l'annee : <br>";
-for ($i = 0; $i < 0; $i) {
-    echo '';
+for ($i = count($mois)-1; $i >= 0 ; $i --) {
+    echo $mois[$i] . '<br>';
 }
 echo '<br><br>';
 //----------------------------------------
@@ -148,7 +149,14 @@ $college = array(
 );
 
 echo '10.Les eleves du college : <br>';
-//ajoutez votre code ici
+foreach($college as $categories => $classes) {
+  echo '<br>' .$categories. ' : ' . '<br>';
+    foreach($classes as $id => $nombre){
+      foreach($nombre as $nom => $valeur) {
+        echo $nom . ' : ' . $valeur . '<br>';
+      }
+    }
+}
 echo '<br><br>';
 
 //----------------------------------------
@@ -156,6 +164,23 @@ echo '<br><br>';
 //reprenez le tableau ci-dessus, ajoutez des éléves pour la classe de troisième et réaffichez tout
 echo '11.Les eleves du college (avec les nouveaux arrivants): <br>';
 //ajoutez votre code ici
+$college['troisieme'] = array(
+    array('Nom' => 'Parker', 'Prenom' => 'Peter'),
+    array('Nom' => 'Ali', 'Prenom' => 'Muhammad'),
+    array('Nom' => 'Tyson', 'Prenom' => 'Mike'),
+    array('Nom' => 'Bourdier', 'Prenom' => 'Baptiste'),
+  );
+foreach($college as $categories => $classes) {
+  echo '<br>' .$categories. ' : ' . '<br>';
+    foreach($classes as $id => $nombre){
+      echo '<br>';
+      foreach($nombre as $nom => $valeur) {
+      echo $nom . ' : '. $valeur . '<br>';
+        
+    }
+  }
+}
+
 echo '<br><br>';
 
 //----------------------------------------
@@ -197,6 +222,19 @@ $videotheque = array(
 
 echo '12.Mes films : <br>';
 //ajoutez votre code ici
+foreach($videotheque as $list => $film){
+  echo '<br><br>';
+  foreach($film as $description => $valeurs) {
+    if($description == 'acteurs'){
+      echo " " . $description . " : ";
+      foreach($valeurs as $nom){
+        echo $nom . " , ";
+      }
+    }else {
+      echo " " . $description . " : " . $valeurs . '<br>';
+    }
+  }
+}
 echo '<br><br>';
 
 //----------------------------------------
@@ -207,4 +245,44 @@ echo '<br><br>';
 
 echo '13.Mes films : <br>';
 //ajoutez votre code ici
+$videotheque[4] = array(
+    'nom' => 'La Ligne Verte',
+    'date' => 1999,
+    'realisateur' => 'Frank Darabont',
+    'acteurs' => array(
+      'Tom Hanks', 'David Morse', 'Michael Clark Duncan', 
+    ),
+    'synopsis' => "Paul Edgecomb, pensionnaire centenaire d'une maison de retraite, est hanté par ses souvenirs. Gardien-chef du pénitencier de Cold Mountain, en 1935, en Louisiane, il était chargé de veiller au bon déroulement des exécutions capitales au bloc E (la ligne verte) en s'efforçant d'adoucir les derniers moments des condamnés. Parmi eux se trouvait un colosse du nom de John Coffey, accusé du viol et du meurtre de deux fillettes.",
+  );
+$videotheque[5] = array(
+    'nom' => 'Rock',
+    'date' => 1996,
+    'realisateur' => 'Mickael Bay',
+    'acteurs' => array(
+      'Ed Harris', 'Sean Connery', 'Nicolas Cage',
+    ),
+    'synopsis' => "Excédé par l'injustice de son gouvernement, le Général Hummel se rend maître de l'île d'Alcatraz et menace de lancer un gaz mortel sur San Francisco. Deux hommes sont chargés de le contrer : un expert en armes chimiques, Stanley Goodspeed, et John Patrick Mason, l'unique prisonnier à s'être évadé d'Alcatraz. Ils se rendent ensemble sur l'île afin de stopper les projets destructeurs du Général.",
+  );
+$videotheque[6] = array(
+    'nom' => 'Taken',
+    'date' => 2008,
+    'realisateur' => 'Pierre Morel',
+    'acteurs' => array(
+      	'liam Neeson', 'Maggie Grace','Famke Janssen',
+    ),
+    'synopsis' => "Ancien agent secret résidant à Los Angeles, Bryan Mills assiste par téléphone à l'enlèvement en plein Paris de sa fille, Kim. Devant faire face à un groupe de mafieux albanais spécialisés dans la traite des femmes et le proxénétisme, il aura besoin de tout son talent d'ex-agent pour l'en extirper en moins de 96 heures.",
+);
+foreach($videotheque as $list => $film){
+  echo '<br><br>';
+  foreach($film as $description => $valeurs) {
+    if($description == 'acteurs'){
+      echo " " . $description . " : ";
+      foreach($valeurs as $nom){
+        echo $nom . " , " . "<br>";
+      }
+    }else {
+      echo " " . $description . " : " . $valeurs . '<br>';
+    }
+  }
+}
 echo '<br><br>';
